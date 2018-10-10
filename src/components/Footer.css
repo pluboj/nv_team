@@ -1,0 +1,10 @@
+div.footer-wrapper, div.footer-wrapper * {
+    background-color: rgb(4, 69, 44) !important;
+    padding-top: 5px;
+}
+.footer-wrapper {
+    padding-bottom: 10px;
+}
+.footer-menu {
+    padding-right: 20px;
+}

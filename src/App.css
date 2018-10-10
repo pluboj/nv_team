@@ -1,0 +1,15 @@
+.app-box {
+    background-color: rgb(39, 115, 86);
+    padding-bottom: 20px;
+}
+.menu-grid {
+    background-color: rgb(200, 220, 212);
+    /* background-color: white; */
+}
+.main-container {
+    padding-top:20px;
+}
+.ui.celled.grid>.column:not(.row), .ui.celled.grid>.row>.column {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}

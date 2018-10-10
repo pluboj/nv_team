@@ -1,0 +1,14 @@
+.table-standings {
+    font-size: 1.1em !important;
+    border: none !important;
+}
+.table-standings td{
+    border: none !important;
+}
+.home-team {
+    font-weight: bold;
+    color: rgb(0, 25, 15);
+}
+.main-image-segment img {
+    width: 100%;
+}

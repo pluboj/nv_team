@@ -1,0 +1,18 @@
+/* .main-menu-container {
+    border-bottom: none;
+} */
+.main-image-segment {
+    border: none !important;
+    padding: 0px !important;
+}
+a.social-icon {
+    text-decoration: none;
+    color: gray;
+}
+a.social-icon:hover {
+    color: black;
+}
+#team-logo {
+    font-size: 1.4em;
+    color: rgb(0, 25, 15);
+}

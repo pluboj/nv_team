@@ -1,0 +1,60 @@
+const scheduleList = [
+    {
+        id: 1,
+        date: "Saturday, October 6, 2018",
+        time: "1:00PM PT",
+        type: "Home",
+        imgUrl: "images/white-and-black-football.png",
+        team: "BELMONT UNITED SC PSV",
+    },
+    {
+        id: 2,
+        date: "Saturday, October 13, 2018",
+        time: "10:30AM PT",
+        type: "Away",
+        imgUrl: "images/star-soccer-ball-badge.png",
+        team: "NORCAL Rush",
+    },
+    {
+        id: 3,
+        date: "Thursday, October 25, 2018",
+        time: "4:30PM PT",
+        type: "Home",
+        imgUrl: "images/blue-star-and-gray-soccer.png",
+        team: "NV SJ United",
+    },
+    {
+        id: 4,
+        date: "Sunday, October 28, 2018",
+        time: "1:30PM PT",
+        type: "Home",
+        imgUrl: "images/black-triangle-and-soccer.png",
+        team: "MCS ECFC Evolution",
+    },
+    {
+        id: 5,
+        date: "Wednesday, November 7, 2018",
+        time: "11:00AM PT",
+        type: "Away",
+        imgUrl: "images/brown-and-white-football-badge.png",
+        team: "JUVENTUS SC Nero",
+    },
+    {
+        id: 6,
+        date: "Saturday, November 17, 2018",
+        time: "2:30PM PT",
+        type: "Home",
+        imgUrl: "images/star-soccer-ball-badge.png",
+        team: "NORCAL Rush",
+    },
+    {
+        id: 7,
+        date: "Monday, November 19, 2018",
+        time: "1:00PM PT",
+        type: "Home",
+        imgUrl: "images/white-and-black-football.png",
+        team: "BELMONT UNITED SC PSV",
+    },
+];
+
+export default scheduleList;
