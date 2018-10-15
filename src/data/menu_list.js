@@ -15,7 +15,7 @@ const MenuList = [
         id: 3,
         name: 'RESULTS',
         activeName: 'RESULTS',
-        link: '/results'
+        link: '/stats/fall18'
     },
     {
         id: 4,

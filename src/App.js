@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import MainMenu from './components/Menu';
 import Home from './components/Home';
-import Statistics from './components/Statistics';
+import Players from './components/Players';
+import { Statistics } from './components/Statistics';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Sticky } from 'semantic-ui-react';
@@ -44,6 +45,7 @@ class App extends Component {
               <div className="ten wide column main-grid">
                 <Route exact path="/" component={Home} />
                 <Route path="/stats/" component={Statistics} />
+                <Route path="/team" component={Players} />
                 <Footer
                   activeItem={activeItem}
                   handleItemClick={this.handleItemClick}>

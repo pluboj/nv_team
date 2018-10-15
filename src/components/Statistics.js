@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ListStandings from '../data/standing_list';
 import { Table, Popup, Item } from 'semantic-ui-react';
-import { sortBy } from 'lodash';
+import { sortBy, shuffle } from 'lodash';
 import { Route, Link } from "react-router-dom";
 import fallScoresList from '../data/fall18_list';
 
-export default class Statistics extends Component {
+export class Statistics extends Component {
     render() {
         return (
             <div>
@@ -98,34 +98,52 @@ class TableStatistics extends Component {
     }
 }
 
-const ScoresFall18 = () => (
-    <div>
-        <h1>FALL 2018</h1>
-        <Table>
-            <Table.Body style={{fontSize: '1.2em'}}>
-                {fallScoresList.map((item) => (
-                    <Table.Row key={'row-'+item.id}>
-                        <Table.Cell style={{width: '10%'}}>
-                            <img class="ui tiny circular image" src="/images/us-youth.png" alt="T1"/>
-                        </Table.Cell>
-                        <Table.Cell style={{width: '10%'}}>
-                            <img class="ui tiny circular image" 
-                                src="/images/wireframe/square-image.png" 
-                                alt="T2"/>
-                        </Table.Cell>
-                        <Table.Cell style={{width: '50%'}}>
-                            {item.home === 'NV SJ Sharks' ? <strong>{item.home}</strong> : item.home}
-                            - {item.visitor === 'NV SJ Sharks' ? 
-                            <strong>{item.visitor}</strong> : 
-                            item.visitor}
-                        </Table.Cell>
-                        <Table.Cell style={{width: '30%'}}>{item.win}:{item.lose}</Table.Cell>
-                    </Table.Row>
-                ))}
-            </Table.Body>
-        </Table>
-    </div>
-);
+export class ScoresFall18 extends Component {
+    render() {
+        const sortedList = shuffle(fallScoresList);
+        return(
+            <div>
+                <h1>FALL 2018</h1>
+                <Table>
+                    <Table.Body style={{fontSize: '1.2em'}}>
+                        {sortedList.map((item) => (
+                            <Table.Row key={'row-'+item.id}>
+                                {item.home === 'NV SJ Sharks' 
+                                    ?
+                                    <Table.Cell style={{width: '10%'}}>
+                                        <img className="ui mini circular image" src="/images/HM.png" alt="T1"/>   
+                                    </Table.Cell>
+                                    :
+                                    <Table.Cell style={{width: '10%'}}>
+                                        <img className="ui mini circular image" src={item.logoUrl} alt="T2"/>
+                                    </Table.Cell>
+                                }
+                                {item.home === 'NV SJ Sharks' 
+                                    ?
+                                    <Table.Cell style={{width: '10%'}}>
+                                        <img className="ui mini circular image" src={item.logoUrl} alt="T2"/>
+                                    </Table.Cell>
+                                    :
+                                    <Table.Cell style={{width: '10%'}}>
+                                        <img className="ui mini circular image" src="/images/HM.png" alt="T1"/>   
+                                    </Table.Cell>
+                                }
+                                
+                                <Table.Cell style={{width: '50%'}}>
+                                    {item.home === 'NV SJ Sharks' ? <strong>{item.home}</strong> : item.home}
+                                    - {item.visitor === 'NV SJ Sharks' ? 
+                                    <strong>{item.visitor}</strong> : 
+                                    item.visitor}
+                                </Table.Cell>
+                                <Table.Cell style={{width: '30%'}}>{item.win}:{item.lose}</Table.Cell>
+                            </Table.Row>
+                        ))}
+                    </Table.Body>
+                </Table>
+            </div>
+        );
+    }
+}
 
 const ScoresSpring18 = () => (
     <div>
@@ -134,14 +152,26 @@ const ScoresSpring18 = () => (
             <Table.Body style={{fontSize: '1.2em'}}>
                 {fallScoresList.map((item) => (
                     <Table.Row key={'row-'+item.id}>
-                        <Table.Cell style={{width: '10%'}}>
-                            <img class="ui tiny circular image" src="/images/us-youth.png" alt="T1" />
-                        </Table.Cell>
-                        <Table.Cell style={{width: '10%'}}>
-                            <img class="ui tiny circular image" 
-                                src="/images/wireframe/square-image.png" 
-                                alt="T2"/>
-                        </Table.Cell>
+                        {item.home === 'NV SJ Sharks' 
+                            ?
+                            <Table.Cell style={{width: '10%'}}>
+                                <img className="ui mini circular image" src="/images/HM.png" alt="T1"/>   
+                            </Table.Cell>
+                            :
+                            <Table.Cell style={{width: '10%'}}>
+                                <img className="ui mini circular image" src={item.logoUrl} alt="T2"/>
+                            </Table.Cell>
+                        }
+                        {item.home === 'NV SJ Sharks' 
+                            ?
+                            <Table.Cell style={{width: '10%'}}>
+                                <img className="ui mini circular image" src={item.logoUrl} alt="T2"/>
+                            </Table.Cell>
+                            :
+                            <Table.Cell style={{width: '10%'}}>
+                                <img className="ui mini circular image" src="/images/HM.png" alt="T1"/>   
+                            </Table.Cell>
+                        }
                         <Table.Cell style={{width: '50%'}}>
                             {item.home === 'NV SJ Sharks' ? <strong>{item.home}</strong> : item.home}
                             - {item.visitor === 'NV SJ Sharks' ? 

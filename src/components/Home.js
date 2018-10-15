@@ -89,6 +89,12 @@ class MatchesList extends Component {
             isMore: loadMore,
         });
     }
+    resetMatches = () => {
+        this.setState({
+            sizeOfList: 3,
+            isMore: true,
+        })
+    }
     render () {
         const listOfMatches = slice(this.state.schedList, 0, this.state.sizeOfList);
         
@@ -112,7 +118,13 @@ class MatchesList extends Component {
                     >
                         More
                     </button>
-                ) : ''}
+                ) : 
+                    <button 
+                        className="ui black button"
+                        onClick={this.resetMatches}
+                    >
+                        Less
+                    </button>}
                 
             </div>
         );
