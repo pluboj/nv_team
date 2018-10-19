@@ -100,6 +100,26 @@ const playersList = [
         dob: 'May 28, 2012',
         imgUrl: IMG_PATH + 'player.jpg',
     },
+    {
+        playerNumber: 21,
+        name: 'Alex Smith',
+        age: 6,
+        ht: 41,
+        wt: 42,
+        pos: 'M',
+        dob: 'May 1, 2012',
+        imgUrl: IMG_PATH + 'player.jpg',
+    },
+    {
+        playerNumber: 4,
+        name: 'Joshua Nguyen',
+        age: 6,
+        ht: 43,
+        wt: 44,
+        pos: 'G',
+        dob: 'March 28, 2012',
+        imgUrl: IMG_PATH + 'player.jpg',
+    },
 ];
 
 export default playersList;

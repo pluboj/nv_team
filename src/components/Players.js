@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
-import { sortBy, map } from 'lodash';
+import { sortBy, map, find } from 'lodash';
 import playersList from '../data/players_list';
 
 export default class Players extends Component {
@@ -8,6 +8,7 @@ export default class Players extends Component {
         column: null,
         direction: null,
         data: [],
+        player: null,
     }
 
     componentDidMount() {
@@ -32,11 +33,19 @@ export default class Players extends Component {
             data: data.reverse(),
         });
     }
+    showProfile = e => {
+        let pNum = Number(e.target.id);
+        const player = find(this.state.data, ['playerNumber', pNum])
+        this.setState({
+            player: player,
+        });
+    }
     render() {
         const {
             column,
             direction,
-            data
+            data,
+            player
         } = this.state;
         return(
             <div>
@@ -82,7 +91,13 @@ export default class Players extends Component {
                                 {map(data, ({ playerNumber, name, age, ht, wt }) => (
                                     <Table.Row key={playerNumber}>
                                         <Table.Cell>{playerNumber}</Table.Cell>
-                                        <Table.Cell>{name}</Table.Cell>
+                                        <Table.Cell
+                                            id={playerNumber}
+                                            onClick={this.showProfile}
+                                            style={{color: '#4183c4', 
+                                                textDecoration: 'underline',
+                                                cursor: 'pointer'}}
+                                        >{name}</Table.Cell>
                                         <Table.Cell>{age}</Table.Cell>
                                         <Table.Cell>{ht}</Table.Cell>
                                         <Table.Cell>{wt}</Table.Cell>
@@ -93,10 +108,71 @@ export default class Players extends Component {
                     </div>
                     <div className="ui center aligned segment" 
                         style={{ width: '40%' }}>
+                        <h2>PLAYER</h2>
+                        {this.state.player 
+                            ? 
+                            <Player
+                                name={player.name}
+                                pos={player.pos}
+                                pnum={player.playerNumber}
+                                age={player.age}
+                                ht={player.ht}
+                                wt={player.wt}
+                            ></Player>
+                            : ''
+                        }
                     </div>
-                </div>
+                </div>  
             </div>
         );
     }
 
+}
+
+class Player extends Component {
+    getPosition = pos => {
+        let position = '';
+        switch(pos) {
+            case 'G': 
+                position = 'Goalkeeper';
+                break;
+            case 'D': 
+                position = 'Defender';
+                break;
+            case 'F': 
+                position = 'Forward';
+                break;
+            case 'M': 
+                position = 'Midfielder';
+                break;
+            default:
+                position = 'Undefined';
+                break;
+        }
+        return position;
+    }
+    render() {
+        return(
+            <div className="ui fluid card">
+                <div className="image">
+                    <img src="images/player.png" alt="playerImage"/>
+                </div>
+                <div 
+                    className="content" 
+                    style={{fontSize: '1.2em',
+                        textAlign: 'left'}}>
+                    <h1>{this.props.name}</h1>
+                    <p style={{fontSize: '1.4em'}}>{this.getPosition(this.props.pos)} <span class="ui teal circular large label">{this.props.pnum}</span></p>
+                    <p><strong>AGE: </strong>{this.props.age}</p>
+                    <p><strong>HT: </strong> {this.props.ht}</p>
+                    <p><strong>WT: </strong> {this.props.wt}</p>
+                    <hr/>
+                    <h3>PROFESSIONAL EXPERIENCE</h3>
+                    <p>2017 (NVYSL): Player made 12 appearances for NVYSL. </p>
+                    <h3>ACQUIRED</h3>
+                    <p>Signed on February 20, 2018.</p>
+                </div>
+            </div>
+        );
+    }
 }
